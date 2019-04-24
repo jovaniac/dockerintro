@@ -36,6 +36,6 @@ En caso de que estes detrás de un proxy, asegurate de configuarlo en
 
 
 * opción proxies: 
-
+El formato de proxy corporativo es : http://username:password@proxy:port/
 
 <p><img src="https://docs.docker.com/docker-for-windows/images/settings-proxies.png" width="50%" height="50%" float="left"></p>
