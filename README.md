@@ -16,3 +16,4 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 2. Instala Docker
 3. Arranca docker buscándolo desde el menú de Inicio.
 <br><img src="https://docs.docker.com/docker-for-windows/images/docker-app-search.png" width="50%" height="50%">
+<img src="https://docs.docker.com/docker-for-windows/images/docker-app-welcome.png" width="50%" height="50%">
