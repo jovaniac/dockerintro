@@ -7,9 +7,9 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 1. [Crear un ejemplo de un app.js](#Crea-una-app-en-node-js)
 2. [Crear un DockerFile para contenerizar esa app.](#Crear-un-DockerFile-para-contenerizar-esa-app)
 3. [arrancarla sin balanceador. ](#arrancarla-sin-balanceador)
-4. Comandos básicos docker. 
-5. definir Dockerfile para un balanceador. 
-6. arrancar la app con ayuda del balanceador.
+4. [Comandos básicos docker.](#Comandos-básicos-docker)
+5. [Definir Dockerfile para un balanceador.] (#Definir-Dockerfile-para-un-balanceador)
+6. arrancar la app con balanceador.
 ### Instalar Docker Engine en Windows 10
 1. [Descarga Docker](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
 2. Instala Docker
@@ -117,3 +117,51 @@ docker build -t dintro/myapp:test .
 ```
 la opción "-t" es el nombre de nuestro imagen en formato <repositorio>/<nombre>:<version> el "." implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
 ## arrancarla sin balanceador
+```Shell
+  docker run -d -e MESSAGE="contenedor1" --name app1 dintro/myapp:test
+  docker run -d -e MESSAGE="contenedor2" --name app2 dintro/myapp:test
+```
+Estos comandos arrancan respectivamente un * *contenedor* * basado en la * * imagen* * que recién construimos.
+la opción "-e" le entrega la variable de ambiente que necesitamos.
+la opción "-d" hace que el contenedor corra en el fondo. 
+## Comandos básicos docker
+```Shell
+  docker ps 
+  ```
+Esta ecomando enlista los contenedores corriiendo actualmente.
+  ```Shell
+  CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                  NAMES
+6f2bb728b23b        dintro/mybalance:test                "nginx -g 'daemon of…"   13 minutes ago      Up 13 minutes       0.0.0.0:9999->80/tcp   mybalancer
+59827fa72a43        dintro/myapp:test                    "node app.js"            23 minutes ago      Up 23 minutes       5000/tcp               app2
+b56a364a577e        dintro/myapp:test                    "node app.js"            23 minutes ago      Up 23 minutes       5000/tcp               app1
+  ```
+  para detener un contenedor en particular ejecutamos: 
+  ```Shell
+  docker stop <id_contenedor>
+  ```
+  para enlistar las * *imagenes disponibles* *
+  ```Shell
+docker image ls
+  ```
+## definir Dockerfile para un balanceador
+  1) en un subdirectorio crear el siguiente archivo "nginx.conf"
+  EJEMPLO DIR: DEMO/nginxbalancer
+  ```Shell
+worker_processes 4;
+
+events { worker_connections 1024; }
+
+http {
+upstream my-app {
+    server app1:5000 weight=1;
+    server app2:5000 weight=1;
+}
+
+server {
+    location / {
+        proxy_pass http://my-app;
+    }
+}
+}
+```
+( no entraremos a detalle ya que es configuración de nginx) 
