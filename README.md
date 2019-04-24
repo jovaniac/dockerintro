@@ -1,7 +1,7 @@
 # docker-intro
 El objetivo de este repo es generar un ejemplo de uso básico de docker y un contenedor generado por cuenta propia. 
 ## Tareas: 
-* Instalar Docker en Windows 10. 
+* [Instalar Docker en Windows 10](#Instalar-Docker-Engine-en-Windows-10)
 * Instalar Docker en Ubuntu 18.04
 * Usar Imagen de ubuntu server con docker pre-instalado. 
 1. [Crear un ejemplo de un app.js](#Crea-una-app-en-node-js)
@@ -10,7 +10,7 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 4. Comandos básicos docker. 
 5. definir Dockerfile para un balanceador. 
 6. arrancar la app con ayuda del balanceador.
-### Instalar Docker Engine en Windows 10.
+### Instalar Docker Engine en Windows 10
 1. [Descarga Docker](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
 2. Instala Docker
 3. Arranca docker buscándolo desde el menú de Inicio.
