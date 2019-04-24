@@ -111,19 +111,25 @@ EXPOSE 5000
 CMD ["node","app.js"]
 ```
 4) Guarda el archivo como "Dockerfile" ( sin extensión)
+
 5) Construye tu imagen ejecutando desde una consola:
+
 ```Shell
 docker build -t dintro/myapp:test .
 ```
+
 la opción "-t" es el nombre de nuestro imagen en formato repositorio/nombre:version el "." implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
 ## arrancarla sin balanceador
 ```Shell
   docker run -d -e MESSAGE="contenedor1" --name app1 dintro/myapp:test
   docker run -d -e MESSAGE="contenedor2" --name app2 dintro/myapp:test
 ```
-Estos comandos arrancan respectivamente un * *contenedor* * basado en la * * imagen* * que recién construimos.
+Estos comandos arrancan respectivamente un *contenedor* basado en la *imagen* que recién construimos.
+
 la opción "-e" le entrega la variable de ambiente que necesitamos.
+
 la opción "-d" hace que el contenedor corra en el fondo. 
+
 ## Comandos básicos docker
 ```Shell
   docker ps 
