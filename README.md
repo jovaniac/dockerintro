@@ -5,7 +5,7 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 * Instalar Docker en Ubuntu 18.04
 * Usar Imagen de ubuntu server con docker pre-instalado. 
 1. [Crear un ejemplo de un app.js](#Crea-una-app-en-node-js)
-2. Crear un DockerFile para contenerizar esa app.
+2. [Crear un DockerFile para contenerizar esa app.](#Crear-un-DockerFile-para-contenerizar-esa-app)
 3. arrancarla sin balanceador. 
 4. Comandos básicos docker. 
 5. definir Dockerfile para un balanceador. 
@@ -67,6 +67,7 @@ This message shows that your installation appears to be working correctly.
 
 ### Crea una app en node js
 Prepara un directorio de trabajo y colocate dentro de él.
+EJEMPLO: DEMO/app
 
 1) copia el siguiente código en un editor de texto. 
 ```JavaScript
@@ -92,7 +93,11 @@ http.createServer(function (req, res) {
 console.log('port:5000'); 
 ```
 2) Guarda el archivo como "app.js" 
-3) en un editor de texto copia el siguiente código y guardalo en la misma ruta que el del paso anterior: 
+## Crear un DockerFile para contenerizar esa app
+En el mismo directorio que el paso anterior: 
+EJEMPLO: DEMO/app
+
+1) en un editor de texto copia el siguiente código y guardalo: 
 ```Dockerfile
 FROM node:lts-alpine
 WORKDIR /opt/testjs
@@ -100,5 +105,3 @@ COPY app.js .
 ENTRYPOINT ["node","app.js"]
 ```
 4) Guarda el archivo como "Dockerfile" ( sin extensión)
-
-
