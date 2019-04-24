@@ -8,7 +8,7 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker.
 2. [Crear un DockerFile para contenerizar esa app.](#Crear-un-DockerFile-para-contenerizar-esa-app)
 3. [arrancarla sin balanceador. ](#arrancarla-sin-balanceador)
 4. [Comandos básicos docker.](#Comandos-básicos-docker)
-5. [Definir Dockerfile para un balanceador.] (#Definir-Dockerfile-para-un-balanceador)
+5. [Definir Dockerfile para un balanceador.](#Definir-Dockerfile-para-un-balanceador)
 6. [arrancar la app con balanceador](#arrancar-la-app-con-balanceador)
 ### Instalar Docker Engine en Windows 10
 1. [Descarga Docker](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
