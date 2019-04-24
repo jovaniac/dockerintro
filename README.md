@@ -115,7 +115,7 @@ CMD ["node","app.js"]
 ```Shell
 docker build -t dintro/myapp:test .
 ```
-la opción "-t" es el nombre de nuestro imagen en formato <repositorio>/<nombre>:<version> el "." implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
+la opción "-t" es el nombre de nuestro imagen en formato repositorio/nombre:version el "." implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
 ## arrancarla sin balanceador
 ```Shell
   docker run -d -e MESSAGE="contenedor1" --name app1 dintro/myapp:test
