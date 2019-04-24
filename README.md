@@ -40,7 +40,7 @@ El formato de proxy corporativo es : http://username:password@proxy:port/
 
 <p><img src="https://docs.docker.com/docker-for-windows/images/settings-proxies.png" width="50%" height="50%" float="left"></p>
 
-4. abre un powershell y asegurate que docker esté funcionando:
+4. abre un powershell y asegurate que docker esté funcionando, ejecutando:
 
 ```PowerShell
 docker run hello-world
@@ -66,6 +66,8 @@ This message shows that your installation appears to be working correctly.
 ```
 
 ### Crea una app en node js
+Prepara un directorio de trabajo y colocate dentro de él.
+
 1) copia el siguiente código en un editor de texto. 
 ```JavaScript
 //jrblanno
@@ -89,3 +91,7 @@ http.createServer(function (req, res) {
 
 console.log('port:5000'); 
 ```
+2) Guarda el archivo como "app.js" 
+3) en un editor de texto copia el siguiente código: 
+```Dockerfile
+from 
