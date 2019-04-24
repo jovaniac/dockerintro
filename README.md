@@ -19,7 +19,7 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 <img src="https://docs.docker.com/docker-for-windows/images/docker-app-welcome.png" width="199px" height="242px" float="right"></p>
 
 
-**Uso de proxy en docker y windows 10**
+**Uso de proxy en docker y windows 10** (opcional)
 
 
 
@@ -39,3 +39,8 @@ En caso de que estes detrás de un proxy, asegurate de configuarlo en
 El formato de proxy corporativo es : http://username:password@proxy:port/
 
 <p><img src="https://docs.docker.com/docker-for-windows/images/settings-proxies.png" width="50%" height="50%" float="left"></p>
+
+4. abre un powershell y asegurate que docker esté funcionando:
+
+'''docker run hello-world''
+
