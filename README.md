@@ -168,7 +168,11 @@ server {
 }
 ```
 ( no entraremos a detalle ya que es configuración de nginx) 
+
+
 2) Dockerfile para NGINX
+
+
 ```Dockerfile
 	#IMAGEN BASE DE NGINX
 	FROM nginx
