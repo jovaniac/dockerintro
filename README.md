@@ -64,3 +64,28 @@ Status: Downloaded newer image for hello-world:latest
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ```
+
+### 1. Crea una app en node js. 
+1) copia el siguiente código en un editor de texto. 
+```JavaScript
+//jrblanno
+//201904
+//JS "hello World" V1
+
+//variables
+var http = require('http');  
+var os = require("os");
+var hostname = os.hostname();
+//variables
+  
+http.createServer(function (req, res) { 
+	res.writeHead(200, { 'Content-Type': 'text/html' });  //formateo
+	res.write (`<h1>${process.env.MESSAGE}</h1>`); //toma la entrada de la consola variable "MESSAGE"
+    res.write('Hello World!'+'<br>'); //el saludo
+    res.write(hostname);  //hostname 
+    res.end(); 
+}).listen(5000); //puerto escucha
+  
+
+console.log('port:5000'); 
+```
