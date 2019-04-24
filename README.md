@@ -99,9 +99,20 @@ EJEMPLO: DEMO/app
 
 1) en un editor de texto copia el siguiente código y guardalo: 
 ```Dockerfile
+#seleccionamos la imagen mínima y oficial de "node" basada en linux alpine
 FROM node:lts-alpine
+#Creamos nuestro directorio de trabajo
 WORKDIR /opt/testjs
+#Copiamos nuestra app
 COPY app.js .
+#exponemos el puerto 5000 de nuestra app
+EXPOSE 5000
+#este comando ejecuta y "convierte" la imagen en un contenedor ejecutable.
 ENTRYPOINT ["node","app.js"]
 ```
 4) Guarda el archivo como "Dockerfile" ( sin extensión)
+5) Construye tu imagen: __( desde powersell no usar "sudo" )__
+```Shell
+sudo docker build -t dintro/myapp:test .
+```
+la opción "-t" es el nombre de nuestro imagen en formato <repositorio>/<nombre>:<version> el "." implica que el archivo "Dockerfile esta en la ruta donde te encuentras.
