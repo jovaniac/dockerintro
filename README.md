@@ -4,7 +4,7 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 * Instalar Docker en Windows 10. 
 * Instalar Docker en Ubuntu 18.04
 * Usar Imagen de ubuntu server con docker pre-instalado. 
-[1. crear un ejemplo de un app.js](Readme.md)
+[1. crear un ejemplo de un app.js](Readme.md# 1. Crea una app en node js.)
 2. Crear un DockerFile para contenerizar esa app.
 3. arrancarla sin balanceador. 
 4. Comandos básicos docker. 
