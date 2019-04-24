@@ -43,5 +43,6 @@ El formato de proxy corporativo es : http://username:password@proxy:port/
 4. abre un powershell y asegurate que docker esté funcionando:
 
 ```PowerShell
-docker run hello-world```
+docker run hello-world
+```
 
