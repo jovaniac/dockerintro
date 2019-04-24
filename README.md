@@ -6,7 +6,7 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 * Usar Imagen de ubuntu server con docker pre-instalado. 
 1. [Crear un ejemplo de un app.js](#Crea-una-app-en-node-js)
 2. [Crear un DockerFile para contenerizar esa app.](#Crear-un-DockerFile-para-contenerizar-esa-app)
-3. arrancarla sin balanceador. 
+3. [arrancarla sin balanceador. ](#arrancarla-sin-balanceador)
 4. Comandos básicos docker. 
 5. definir Dockerfile para un balanceador. 
 6. arrancar la app con ayuda del balanceador.
@@ -105,14 +105,15 @@ FROM node:lts-alpine
 WORKDIR /opt/testjs
 #Copiamos nuestra app
 COPY app.js .
-#exponemos el puerto 5000 de nuestra app
+#exponemos el puerto 5000 de nuestra app, para que otros contenedores lo consuman
 EXPOSE 5000
 #este comando ejecuta y "convierte" la imagen en un contenedor ejecutable.
-ENTRYPOINT ["node","app.js"]
+CMD ["node","app.js"]
 ```
 4) Guarda el archivo como "Dockerfile" ( sin extensión)
-5) Construye tu imagen: __( desde powersell no usar "sudo" )__
+5) Construye tu imagen ejecutando desde una consola:
 ```Shell
-sudo docker build -t dintro/myapp:test .
+docker build -t dintro/myapp:test .
 ```
-la opción "-t" es el nombre de nuestro imagen en formato <repositorio>/<nombre>:<version> el "." implica que el archivo "Dockerfile esta en la ruta donde te encuentras.
+la opción "-t" es el nombre de nuestro imagen en formato <repositorio>/<nombre>:<version> el "." implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
+## arrancarla sin balanceador
