@@ -185,9 +185,18 @@ docker build -t dintro/mybalance:test .
 ```
 ## arrancar la app con balanceador
 Partimos del hecho de que los contenedores app1 y app2 están corriendo, de lo contrario rearrancalos.
+Estas instrucciones arrancan el contenedor tal cual lo arrancaste la primera vez.
+```Shell
+docker start app1
+docker start app2 
+```
+Para arrancar el balanceador :
+
+
 ```Shell
 docker run -d --name mybalancer -p 9999:80 --link app1:app1 --link app2:app2 dintro/mybalance:test
 ```
+
 en este caso, la opción "--link" es crucial , ya que le permite al contenedor de nuestro balanceador, hablar con los contenedores app1 y app2.
 la opción "-p" mappea el puerto 80 del contenedor al 9999 de nuestro equipo host.
 
