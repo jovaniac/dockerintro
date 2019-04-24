@@ -9,7 +9,7 @@ El objetivo de este repo es generar un ejemplo de uso básico de docker y un con
 3. [arrancarla sin balanceador. ](#arrancarla-sin-balanceador)
 4. [Comandos básicos docker.](#Comandos-básicos-docker)
 5. [Definir Dockerfile para un balanceador.] (#Definir-Dockerfile-para-un-balanceador)
-6. arrancar la app con balanceador.
+6. [arrancar la app con balanceador](#arrancar-la-app-con-balanceador)
 ### Instalar Docker Engine en Windows 10
 1. [Descarga Docker](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
 2. Instala Docker
@@ -144,8 +144,11 @@ b56a364a577e        dintro/myapp:test                    "node app.js"          
 docker image ls
   ```
 ## definir Dockerfile para un balanceador
-  1) en un subdirectorio crear el siguiente archivo "nginx.conf"
+  1) en un subdirectorio crear el siguiente archivo "nginx.conf" y copiar el siguiente código:
+	
+
   EJEMPLO DIR: DEMO/nginxbalancer
+
   ```Shell
 worker_processes 4;
 
@@ -165,3 +168,32 @@ server {
 }
 ```
 ( no entraremos a detalle ya que es configuración de nginx) 
+2) Dockerfile para NGINX
+```Dockerfile
+	#IMAGEN BASE DE NGINX
+	FROM nginx
+	#DIRECTORIO DE TRABAJO DEL CONTENEDOR
+	WORKDIR /etc/nginx/
+	#INGRESAMOS NUESTRA CONFIGURACION
+	COPY nginx.conf .
+	#EXPONEMOS EL PUERTO 80
+	EXPOSE 80
+```
+3) construimos la imagen de nuestro balanceador.
+```Shell
+docker build -t dintro/mybalance:test .
+```
+## arrancar la app con balanceador
+Partimos del hecho de que los contenedores app1 y app2 están corriendo, de lo contrario rearrancalos.
+```Shell
+docker run -d --name mybalancer -p 9999:80 --link app1:app1 --link app2:app2 dintro/mybalance:test
+```
+en este caso, la opción "--link" es crucial , ya que le permite al contenedor de nuestro balanceador, hablar con los contenedores app1 y app2.
+la opción "-p" mappea el puerto 80 del contenedor al 9999 de nuestro equipo host.
+
+Ahora ingresa en un explorador a : 
+```Shell
+http://localhost:9999
+```
+Y carga multiples veces la página para que lo puedas ver en acción!!!
+
