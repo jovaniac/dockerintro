@@ -92,6 +92,13 @@ http.createServer(function (req, res) {
 console.log('port:5000'); 
 ```
 2) Guarda el archivo como "app.js" 
-3) en un editor de texto copia el siguiente código: 
+3) en un editor de texto copia el siguiente código y guardalo en la misma ruta que el del paso anterior: 
 ```Dockerfile
-from 
+FROM node:lts-alpine
+WORKDIR /opt/testjs
+COPY app.js .
+ENTRYPOINT ["node","app.js"]
+```
+4) Guarda el archivo como "Dockerfile" ( sin extensión)
+
+
