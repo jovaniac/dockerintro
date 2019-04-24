@@ -1,5 +1,5 @@
 # docker-intro
-El objetivo de este repo es generar un ejemplo de uso básico de docker y un contenedor generado por cuenta propia. 
+El objetivo de este repo es generar un ejemplo de uso básico de docker.
 ## Tareas: 
 * [Instalar Docker en Windows 10](#Instalar-Docker-Engine-en-Windows-10)
 * Instalar Docker en Ubuntu 18.04
