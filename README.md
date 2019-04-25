@@ -119,7 +119,8 @@ CMD ["node","app.js"]
 docker build -t dintro/myapp:test .
 ```
 
-la opción "-t" es el nombre de nuestro imagen en formato repositorio/nombre:version el "." implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
+la opción "-t" es el nombre de nuestro imagen en formato repositorio/nombre:version .
+El  "."  implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
 ## arrancarla sin balanceador
 ```Shell
   docker run -d -e MESSAGE="contenedor1" --name app1 dintro/myapp:test
@@ -135,7 +136,7 @@ la opción "-d" hace que el contenedor corra en el fondo.
 ```Shell
   docker ps 
   ```
-Esta ecomando enlista los contenedores corriiendo actualmente.
+Esta comando enlista los contenedores corriiendo actualmente.
   ```Shell
   CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                  NAMES
 6f2bb728b23b        dintro/mybalance:test                "nginx -g 'daemon of…"   13 minutes ago      Up 13 minutes       0.0.0.0:9999->80/tcp   mybalancer
