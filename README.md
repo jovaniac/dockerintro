@@ -1,5 +1,6 @@
 # docker-intro
 El objetivo de este repo es generar un ejemplo de uso básico de docker.
+Cada uno de los puntos son simples extractos de código para usarse en modo "copy-paste" y poder ejecutar el tutorial en menos de 15 minutos.
 ## Tareas: 
 * [Instalar Docker en Windows 10](#Instalar-Docker-Engine-en-Windows-10)
 * Instalar Docker en Ubuntu 18.04
