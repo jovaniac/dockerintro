@@ -123,8 +123,8 @@ la opción "-t" es el nombre de nuestro imagen en formato repositorio/nombre:ver
 El  "."  implica que el archivo "Dockerfile" esta en la ruta donde te encuentras.
 ## arrancarla sin balanceador
 ```Shell
-  docker run -d -e MESSAGE="contenedor1" --name app1 dintro/myapp:test
-  docker run -d -e MESSAGE="contenedor2" --name app2 dintro/myapp:test
+  docker run -d -e MESSAGE="contenedor1" --name instancia1 dintro/myapp:test
+  docker run -d -e MESSAGE="contenedor2" --name instancia2 dintro/myapp:test
 ```
 Estos comandos arrancan respectivamente un *contenedor* basado en la *imagen* que recién construimos.
 
@@ -140,8 +140,8 @@ Esta comando enlista los contenedores corriiendo actualmente.
   ```Shell
   CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                  NAMES
 6f2bb728b23b        dintro/mybalance:test                "nginx -g 'daemon of…"   13 minutes ago      Up 13 minutes       0.0.0.0:9999->80/tcp   mybalancer
-59827fa72a43        dintro/myapp:test                    "node app.js"            23 minutes ago      Up 23 minutes       5000/tcp               app2
-b56a364a577e        dintro/myapp:test                    "node app.js"            23 minutes ago      Up 23 minutes       5000/tcp               app1
+59827fa72a43        dintro/myapp:test                    "node app.js"            23 minutes ago      Up 23 minutes       5000/tcp               instancia2
+b56a364a577e        dintro/myapp:test                    "node app.js"            23 minutes ago      Up 23 minutes       5000/tcp               instancia1
   ```
   para detener un contenedor en particular ejecutamos: 
   ```Shell
@@ -164,8 +164,8 @@ events { worker_connections 1024; }
 
 http {
 upstream my-app {
-    server app1:5000 weight=1;
-    server app2:5000 weight=1;
+    server instancia1:5000 weight=1;
+    server instancia2:5000 weight=1;
 }
 
 server {
@@ -196,20 +196,20 @@ server {
 docker build -t dintro/mybalance:test .
 ```
 ## arrancar la app con balanceador
-Partimos del hecho de que los contenedores app1 y app2 están corriendo, de lo contrario rearrancalos.
+Partimos del hecho de que los contenedores instancia1 y instancia2 están corriendo, de lo contrario rearrancalos.
 Estas instrucciones arrancan el contenedor tal cual lo arrancaste la primera vez.
 ```Shell
-docker start app1
-docker start app2 
+docker start instancia1
+docker start instancia2 
 ```
 Para arrancar el balanceador :
 
 
 ```Shell
-docker run -d --name mybalancer -p 9999:80 --link app1:app1 --link app2:app2 dintro/mybalance:test
+docker run -d --name mybalancer -p 9999:80 --link instancia1:instancia1 --link instancia2:instancia2 dintro/mybalance:test
 ```
 
-en este caso, la opción "--link" es crucial , ya que le permite al contenedor de nuestro balanceador, hablar con los contenedores app1 y app2.
+en este caso, la opción "--link" es crucial , ya que le permite al contenedor de nuestro balanceador, hablar con los contenedores instancia1 y instancia2.
 la opción "-p" mappea el puerto 80 del contenedor al 9999 de nuestro equipo host.
 
 Ahora ingresa en un explorador a : 
