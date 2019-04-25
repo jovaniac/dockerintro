@@ -202,6 +202,12 @@ Estas instrucciones arrancan el contenedor tal cual lo arrancaste la primera vez
 docker start instancia1
 docker start instancia2 
 ```
+En caso de necesitar detenerlas
+```Shell
+docker kill instancia1
+docker kill instancia2 
+```
+
 Para arrancar el balanceador :
 
 
