@@ -101,7 +101,11 @@ EJEMPLO: DEMO/app
 1) en un editor de texto copia el siguiente código y guardalo: 
 ```Dockerfile
 #seleccionamos la imagen mínima y oficial de "node" basada en linux alpine
-FROM node:lts-alpine
+#IMAGEN DESDE DOCKERHUB
+#FROM node:lts-alpine
+#IMAGEN DESDE RHEL USANDO UBI 
+FROM registry.access.redhat.com/ubi8/nodejs-10
+
 #Creamos nuestro directorio de trabajo
 WORKDIR /opt/testjs
 #Copiamos nuestra app
